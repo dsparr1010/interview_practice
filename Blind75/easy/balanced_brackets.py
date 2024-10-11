@@ -35,20 +35,26 @@
 
 """
 
+# TODO: Figure this out... :)
+
 
 def is_valid(brackets: str) -> bool:
-    
-    
+
     # Utilize a dict to map closing bracket (key) to opening brackets (value)
     valid_parens = {"}": "{", "]": "[", ")": "("}
-    
-    # remove last from stack
-    
-    # check if removed closing bracket 
+    bracket_list = list(brackets)
+
+    for elem in bracket_list:
+        # remove last from stack
+        last_bracket = bracket_list.pop()
+        if valid_parens[last_bracket] != elem:
+            return False
+
+    return True
 
 
 if __name__ == "__main__":
-    is_valid(brackets="()")
-    is_valid("()[]{}")
-    is_valid("(]")
-    is_valid("([])")
+    # assert is_valid(brackets="()") is True
+    # assert is_valid("()[]{}") is True
+    assert is_valid("(]") is False
+    # is_valid("([])")
